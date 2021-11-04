@@ -1,12 +1,12 @@
 ###########################
 # Created by Karim Shaloh #
-# Nov 3, 2021             #
+# Nov 4, 2021             #
 ###########################
 
 # import pandas and numpy with shortcut 'pd' and 'np'
+# (installing pandas should automatically install numpy)
 import pandas as pd  # pip install pandas
-# pip install numpy (installing pandas should automatically install numpy)
-import numpy as np
+import numpy as np   # pip install numpy
 
 # read csv file
 data = pd.read_csv('zoomus_meeting_report_92152812677-2.csv')
