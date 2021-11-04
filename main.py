@@ -1,59 +1,11 @@
-# import os
-# import glob
-# import csv
-# from https://pythonhosted.org/openpyxl/ or PyPI (e.g. via pip)
-# import openpyxl
-
-# for csvfile in glob.glob(os.path.join('.', '*.csv')):
-#     wb = openpyxl.Workbook()
-#     ws = wb.active
-#     with open(csvfile, 'rb') as f:
-#         reader = csv.reader(f)
-#         for r, row in enumerate(reader, start=1):
-#             for c, val in enumerate(row, start=1):
-#                 ws.cell(row=r, column=c).value = val
-#     wb.save(csvfile + '.xlsx')
-########################################################################
-
-# # importing csv module
-# import csv
-
-# # csv file name
-# filename = "zoomus_meeting_report_92152812677-2.csv"
-
-# # initializing the titles and rows list
-# fields = []
-# rows = []
-
-# # reading csv file
-# with open(filename, 'r') as csvfile:
-#     # creating a csv reader object
-#     csvreader = csv.reader(csvfile)
-
-#     # extracting field names through first row
-#     fields = next(csvreader)
-
-#     # extracting each data row one by one
-#     for row in csvreader:
-#         rows.append(row)
-
-#     # get total number of rows
-#     print("Total no. of rows: %d" % (csvreader.line_num))
-
-# # printing the field names
-# print('Field names are:' + ', '.join(field for field in fields))
-
-# # printing first 5 rows
-# print('\nFirst 5 rows are:\n')
-# for row in rows[:5]:
-#     # parsing each column of a row
-#     for col in row:
-#         print("%10s" % col),
-#     print('\n')
-#############################################
+###########################
+# Created by Karim Shaloh #
+# Nov 3, 2021             #
+###########################
 
 # import pandas and numpy with shortcut 'pd' and 'np'
-import pandas as pd
+import pandas as pd  # pip install pandas
+# pip install numpy (installing pandas should automatically install numpy)
 import numpy as np
 
 # read csv file
@@ -88,6 +40,8 @@ data.drop('Leave time', inplace=True, axis=1)
 data["Present"] = np.where(data['Total Time Present'] >= cutoff_time, 1, 0)
 print(data['Present'])
 
-new_data = pd.DataFrame(np.array(data["User Name"]), columns=['Student Name'])
-new_data[date] = data["Present"].to_numpy()
-print(new_data)
+# Create final DataFrame that holds all attendances results
+attendances_df = pd.DataFrame(
+    np.array(data["User Name"]), columns=['Student Name'])
+attendances_df[date] = data["Present"].to_numpy()
+print(attendances_df)
